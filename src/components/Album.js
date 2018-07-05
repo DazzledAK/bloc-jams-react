@@ -45,6 +45,26 @@ import albumData from './../data/albums';
        }
       }
 
+      handleHoverOn (song) {
+        this.setState({ hover: song });
+      }
+
+      handleHoverOff (song) {
+        this.setState({ hover: null });
+      }
+
+      handleButton (song, index) {
+        if (this.state.isPlaying !== true && this.state.hover === song) {
+          return <span className="ion-play"></span>;
+        } else if (this.state.isPlaying[0] === true && this.state.hover === null) {
+          return <span className="ion-pause"></span>;
+        } else if (this.state.isPlaying === true && this.state.hover === song) {
+          return <span className="ion-pause"></span>;
+        } else {
+          return (index + 1)
+        }
+      }
+
    render() {
      return (
        <section className="album">
@@ -66,7 +86,7 @@ import albumData from './../data/albums';
             {
               this.state.album.songs.map( (song, index) =>
                 <tr className="album-song" key={index} onClick={() => this.handleSongClick(song)} >
-                  <td >{index + 1}</td>
+                  <td onMouseEnter={() => this.handleHoverOn(song) } onMouseLeave={() => this.handleHoverOff(song)}>{this.handleButton(song, index)}</td>
                   <td>{song.title}</td>
                   <td>{song.duration}</td>
                 </tr>
