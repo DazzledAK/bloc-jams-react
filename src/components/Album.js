@@ -13,11 +13,32 @@ import PlayerBar from './PlayerBar';
        this.state = {
          album: album,
          currentSong: album.songs[0],
+         currentTime: 0,
+         duration: album.songs[0].duration,
          isPlaying: false
        };
 
        this.audioElement = document.createElement('audio');
        this.audioElement.src = album.songs[0].audioSrc;
+     }
+
+     componentDidMount() {
+       this.eventListeners = {
+         timeupdate: e => {
+           this.setState({ currentTime: this.audioElement.currentTime });
+         },
+         durationchange: e => {
+            this.setState({ duration: this.audioElement.duration });
+         }
+       };
+       this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
+       this.audioElement.addEventListener('durationchange', this.eventListeners.timeupdate);
+     }
+
+     componentWillUnmount() {
+       this.audioElement.src = null;
+       this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
+       this.audioElement.removeEventListener('durationchange', this.eventListeners.timeupdate);
      }
 
      play() {
@@ -46,15 +67,15 @@ import PlayerBar from './PlayerBar';
        }
       }
 
-      handleHoverOn (song) {
+      handleHoverOn(song) {
         this.setState({ hover: song });
       }
 
-      handleHoverOff (song) {
+      handleHoverOff(song) {
         this.setState({ hover: null });
       }
 
-      handleButton (song, index) {
+      handleButton(song, index) {
         if (this.state.isPlaying !== true && this.state.hover === song) {
           return <span className="ion-play"></span>;
         } else if (this.state.isPlaying[0] === true && this.state.hover === null) {
@@ -66,7 +87,7 @@ import PlayerBar from './PlayerBar';
         }
       }
 
-      handlePrevClick () {
+      handlePrevClick() {
         const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
         const newIndex = Math.max(0, currentIndex - 1);
         const newSong = this.state.album.songs[newIndex];
@@ -74,12 +95,18 @@ import PlayerBar from './PlayerBar';
         this.play();
       }
 
-      handleNextClick () {
+      handleNextClick() {
         const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
         const newIndex = Math.min(4, currentIndex + 1);
         const newSong = this.state.album.songs[newIndex];
         this.setSong(newSong);
         this.play();
+      }
+
+      handleTimeChange(e) {
+        const newTime = this.audioElement.duration * e.target.value;
+        this.audioElement.currentTime = newTime;
+        this.setState({ currentTime: newTime });
       }
 
    render() {
@@ -114,9 +141,12 @@ import PlayerBar from './PlayerBar';
          <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
+          currentTime={this.audioElement.currentTime}
+          duration={this.audioElement.duration}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
+          handleTimeChange={(e) => this.handleTimeChange(e)}
         />
        </section>
      );
