@@ -109,6 +109,25 @@ import PlayerBar from './PlayerBar';
         this.setState({ currentTime: newTime });
       }
 
+      handleVolumeChange(e) {
+        const newVolume = e.target.value;
+        this.audioElement.volume = newVolume;
+        this.setState({ volume: newVolume });
+      }
+
+      formatTime(time) {
+        if(isNaN(time) || time === undefined) {
+          return '-:--';
+        }
+        const minutes = Math.floor(time/60);
+        const seconds = Math.floor(time - minutes * 60);
+        if (seconds < 10) {
+          return `${minutes}:0${seconds}`;
+        } else {
+          return `${minutes}:${seconds}`;
+          }
+        }
+
    render() {
      return (
        <section className="album">
@@ -132,7 +151,7 @@ import PlayerBar from './PlayerBar';
                 <tr className="album-song" key={index} onClick={() => this.handleSongClick(song)} >
                   <td onMouseEnter={() => this.handleHoverOn(song) } onMouseLeave={() => this.handleHoverOff(song)}>{this.handleButton(song, index)}</td>
                   <td>{song.title}</td>
-                  <td>{song.duration}</td>
+                  <td>{this.formatTime(song.duration)}</td>
                 </tr>
               )
             }
@@ -147,6 +166,8 @@ import PlayerBar from './PlayerBar';
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}
+          formatTime={(time) => this.formatTime(time)}
         />
        </section>
      );
