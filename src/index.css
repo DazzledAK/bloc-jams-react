@@ -1,5 +1,322 @@
+/* Landing CSS and App CSS */
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgb(58,23,63);
+  height: 100%;
+  width: 100%;
+}
+
+.selling-points {
+  display: flex;
+  padding: 20px 50px;
+  line-height: 1.65;
+  margin: 0 auto 0 auto;
+}
+
+.point-title, .point-description {
+  text-shadow: 1px 1px 0px rgb(58,23,63);
+  color: #FFF;
+}
+
+.point {
+  flex: 1;
+}
+
+.hero-title {
+  width: 100%;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  text-shadow: 1px 1px 0px rgb(58,23,63);
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  margin-top: 250px;
+  color: #FFF;
+}
+
+#front img {
+  height: 500px;
+  position: relative;
+  border-bottom: 2px solid white;
+}
+
+.ion-music-note, .ion-iphone, .ion-wifi {
+  font-size: 6rem;
+  color: rgb(233,50,117);;
+  text-shadow: 1px 1px 0px rgb(58,23,63);
+}
+
+#bloc-logo {
+  display: inline-block;
+  width: 8%;
+  height: 80px;
+  float: left;
+  margin: auto 0 auto 30px;
+  cursor: pointer;
+  padding: 10px 0 10px 0;
+}
+
+.navbar-link {
+  display: inline-block;
+  color: white;
+  font-size: 0.750rem;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  padding-top: 40px;
+  float: right;
+  margin-right: 40px;
+}
+
+.navbar-link:hover {
+  color: rgb(233,50,117);
+}
+
+.container-navbar {
+  width: 100%;
+  height: 100px;
+  background-color: #2D0036;
+  border-bottom: 2px solid white;
+}
+
+/* Library CSS */
+
+.library {
+  display: flex;
+  width: 100%;
+  height: 850px;
+  justify-content: center;
+}
+
+#images-song {
+  margin: 60px;
+  border: 2px solid white;
+}
+
+.link-song {
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* Album CSS */
+
+#album-info {
+  display: block;
+  margin: 0 auto;
+  max-width: 56rem;
+  height: 26rem;
+}
+
+#album-cover-art {
+  position: relative;
+  left: 5%;
+  width: 40%;
+  margin-top: 2rem;
+  border: 2px solid white;
+  float: left;
+}
+
+.album-details {
+  position: relative;
+  top: 15%;
+  padding: 1rem;
+  width: 100%;
+  left: 5%;
+  line-height: 2rem;
+  color: #FFF;
+}
+
+#album-title {
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.artist {
+  font-size: 1.75rem;
+  font-weight: 350;
+}
+
+#release-info {
+  font-size: .8rem;
+  font-weight: 300;
+}
+
+#song-list {
+  width: 70%;
+  margin: 0 auto 50px auto;
+  border-collapse: collapse;
+  padding-bottom: 10px;
+}
+
+.album-song {
+  height: 3rem;
+  font-size: .9rem;
+  border-bottom: 1px solid white;
+}
+
+td {
+  color: white;
+  font-weight: 300;
+}
+
+#song-title-td {
+  width: 90%;
+  text-align: left;
+}
+
+#song-duration {
+  width: 5%;
+}
+
+/* PlayerBar CSS */
+
+.player-bar {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background-color: rgba(193, 173, 214, 0.5);
+  z-index: 10;
+  display: flex;
+}
+
+#buttons {
+  flex: 1;
+  margin: auto 0;
+  text-decoration: none;
+}
+
+#time-control {
+  flex: 1;
+  margin: auto 0;
+}
+
+#volume-control {
+  flex: 1;
+  margin: auto 0;
+}
+
+#previous {
+  font-size: 2rem;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  margin-right: 5rem;
+  color: white;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+#play-pause {
+  font-size: 2rem;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  margin-right: 5rem;
+  color: white;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+#next {
+  font-size: 2rem;
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  color: white;
+  margin-right: 5rem;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+.seek-bar1 {
+  cursor: pointer;
+  width: 100%;
+}
+
+.seek-bar2 {
+  cursor: pointer;
+  width: 50%;
+}
+
+.current-time {
+  margin: 0 605px 0 0;
+  color: white;
+}
+
+.total-time {
+  margin: 0 0 0 605px;
+  color: white;
+}
+
+.ion-volume-low {
+  margin: 0 305px 0 0;
+  color: white;
+}
+
+.ion-volume-high {
+  margin: 0 0 0 305px;
+  color: white;
+}
+
+.ion-play, .ion-pause, .ion-skip-forward, .ion-skip-backward {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ion-play:hover {
+  color: rgb(233,50,117);
+}
+
+.ion-pause:hover {
+  color: rgb(233,50,117);
+}
+
+.ion-skip-forward:hover {
+  color: rgb(233,50,117);
+}
+
+.ion-skip-backward:hover {
+  color: rgb(233,50,117);
 }
