@@ -150,8 +150,8 @@ import PlayerBar from './PlayerBar';
               this.state.album.songs.map( (song, index) =>
                 <tr className="album-song" key={index} onClick={() => this.handleSongClick(song)} >
                   <td onMouseEnter={() => this.handleHoverOn(song) } onMouseLeave={() => this.handleHoverOff(song)}>{this.handleButton(song, index)}</td>
-                  <td>{song.title}</td>
-                  <td>{this.formatTime(song.duration)}</td>
+                  <td id="song-title-td" >{song.title}</td>
+                  <td id="song-duration" >{this.formatTime(song.duration)}</td>
                 </tr>
               )
             }
